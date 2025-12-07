@@ -58,7 +58,8 @@ npm install
 To run the app, run the following commands:
 
 ```bash
-npm run start
+npm run dev
+npm run build
 ```
 
 Open the app in your browser:
