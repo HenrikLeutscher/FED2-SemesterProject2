@@ -64,6 +64,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             return;
         }
 
+        if (searchInput.value.trim() === "") {
+            listingSearchResult.classList.add("hidden");
+        }
+
         displayListings(filteredListings, listingsContainer);
         startCountDown(listingsContainer);
     }

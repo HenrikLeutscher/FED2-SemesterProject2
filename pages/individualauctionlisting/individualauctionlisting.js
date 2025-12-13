@@ -57,7 +57,7 @@ function renderListingDetails(listing, individualListingContainer) {
   document.querySelector("h1.sr-only").textContent = listing.title;
 
   individualListingContainer.innerHTML = `
-    <div class="border rounded mb-5 m-5">
+    <div class="border rounded pb-5 p-5">
       <div class="flex flex-col lg:flex-row min-h-150 lg:items-center">
 
         <div class="relative w-full lg:max-w-1/2">

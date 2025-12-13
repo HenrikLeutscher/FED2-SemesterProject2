@@ -4,6 +4,14 @@ html {
   font-family: 'Inter', sans-serif;
 }
 
+html {
+    @apply max-w-[1920px] mx-auto bg-linear-to-l from-blue-600 to-blue-800;
+}
+
+main {
+    @apply bg-white;
+}
+
 h1 {
     @apply text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4;
 }
