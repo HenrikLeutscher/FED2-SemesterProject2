@@ -28,7 +28,7 @@ export function displayListings(listings, container, showSeller = true) {
                     </a>
                 </p>
                 ` : ""}
-                <p>Highest Bid: $${highestBid}</p>
+                <p>Highest Bid: ${highestBid} Credits</p>
                 <div class="flex justify-between">
                     <p>${bidCount} bids</p>
                     <p class="countdown" data-ends="${listing.endsAt}">Loading...</p>

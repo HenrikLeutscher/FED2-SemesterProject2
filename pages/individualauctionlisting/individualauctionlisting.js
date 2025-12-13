@@ -101,7 +101,7 @@ function renderListingDetails(listing, individualListingContainer) {
           </p>
 
           <div class="flex flex-col md:flex-row md:gap-5 border-t-2 border-blue-400 pt-3">
-            <p class="font-semibold">Highest Bid: <span class="font-normal">$${highestBid}</span></p>
+            <p class="font-semibold">Highest Bid: <span class="font-normal">${highestBid} Credits</span></p>
             <p>${bidCount} bids</p>
           </div>
 
@@ -119,7 +119,7 @@ function renderListingDetails(listing, individualListingContainer) {
                 <input type="number"
                 id="bidAmount"
                 class="border rounded px-2 py-1"
-                placeholder="Place bid, min $${highestBid + 1}"
+                placeholder="Place bid, min ${highestBid + 1} Credits"
                 min="${highestBid + 1}" />
 
               <button id="placeBidBtn"
@@ -194,7 +194,7 @@ function renderListingDetails(listing, individualListingContainer) {
       bidBtn.textContent = "Placing your bid...";
 
       if (!bidAmount || bidAmount <= highestBid) {
-        errorMessageDiv.textContent = `Your bid must be higher than the current highest bid of $${highestBid}.`;
+        errorMessageDiv.textContent = `Your bid must be higher than the current highest bid of Credits: ${highestBid}.`;
         bidBtn.disabled = false;
         bidBtn.textContent = "Place a Bid";
         return;
@@ -275,7 +275,7 @@ function renderBidHistory(listing) {
             <a href="/pages/profile/profile.html?user=${bidderName}" class="text-blue-400 mr-1 hover:underline">
               @${bidderName}
             </a>
-            has bid $${bidAmount} on ${bidTime}
+            has bid ${bidAmount} Credits on ${bidTime}
           </p>
         </div>
       `;

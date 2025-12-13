@@ -25,6 +25,6 @@ export async function listingStats() {
 
     // DOM elements to display stats
     document.getElementById("activeListings").innerText = activeCount;
-    document.getElementById("totalSpent").innerText = `$${totalSpent.toLocaleString()}`;
+    document.getElementById("totalSpent").innerText = `${totalSpent.toLocaleString()}`;
     document.getElementById("endingToday").innerText = endingToday;
 }
