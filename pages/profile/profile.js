@@ -180,6 +180,7 @@ async function updateProfile() {
     saveProfileBtn.disabled = true;
     saveProfileBtn.textContent = "Saving...";
     errorMessage.textContent = "";
+    const successMessageDiv = document.getElementById("success-message");
 
     const updatedData = {
         avatar: avatarInput ? { url: avatarInput } : "",
@@ -209,6 +210,16 @@ async function updateProfile() {
         saveProfileBtn.textContent = "Save Changes";
       return;
     }
+
+    successMessageDiv.classList.remove("hidden");
+    successMessageDiv.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-600 shrink-0" fill="none"
+      viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+    </svg>
+    <span class="font-semibold text-lg leading-tight flex items-center">
+      Profile updated successfully! Reloading...
+    </span>`;
     setTimeout(() => window.location.reload(), 2000);
     } catch (error) {
         errorMessage.textContent = "Error updating profile: " + error.message;
