@@ -42,9 +42,9 @@
       </div>
     </header>
 
-    <main class="min-h-[70vh] max-w-[1400px] mx-auto">
-      <h1 class="text-center py-5">Profile Page</h1>
-      <div id="profile-container" class="w-[90%] mx-auto border-blue-400 border-2 p-5">
+    <main class="min-h-[70vh] max-w-[1920px] mx-auto py-5">
+      <h1 class="text-center">Profile Page</h1>
+      <div id="profile-container" class="w-[90%] max-w-[1400px] mx-auto border-blue-400 border-2 p-5">
         <div>
           <div class="flex flex-col  items-center md:flex-row justify-between">
             <img loading="lazy" id="profile-avatar" class="w-30 h-30 md:h-60 md:w-60 rounded-full mb-4 object-cover"/>
@@ -69,17 +69,18 @@
 
                 <button type="button" id="save-profile-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded-2xl cursor-pointer" aria-label="Save profile changes">Save Changes</button>
               </form>
-              <p id="error-message"></p>
+              <p id="error-message" class="text-center text-red-400 py-2"></p>
+              <div id="success-message" class="hidden absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-50 border border-blue-700 text-blue-400 px-6 py-4 rounded-lg shadow-lg flex items-center gap-3"></div>
             </div>
           </div>
         </div>
         <div id="user-listings-container" class="mx-auto border-blue-400 border-t-2 p-5 my-3">
           <h2>Listing History:</h2>
-          <div id="user-listings" class="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-10 overflow-hidden"></div>
+          <div id="user-listings" class="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:px-10 overflow-hidden"></div>
         </div>
         <div id="user-bids-container" class="mx-auto border-blue-400 border-t-2 p-5 my-3">
           <h2>Listings This User Has Bid On:</h2>
-          <div id="userBids" class="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-10 overflow-hidden"></div>
+          <div id="userBids" class="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:px-10 overflow-hidden"></div>
         </div>
       </div>
     </main>
