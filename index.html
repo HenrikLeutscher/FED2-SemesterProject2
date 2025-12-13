@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Online Auction Platform" />
+    <meta name="keywords" content="Auction House, Bidding, Bid, Online Auction, Dealery" />
+    <meta name="author" content="Henrik Leutscher" />
+    <link rel="icon" type="image/png" href="/assets/icons/favicon.png" />
+    <title>Home | Dealery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+  </head>
+<body>
+    <header class="bg-blue-700 h-full py-5 sm:py-0">
+      <div class="h-30 items-center flex justify-between px-5" id="HeaderNotLoggedIn">
+        <a href="/index.html">
+          <img src="/assets/images/DealeryLogoPhone.png" alt="Dealery Logo" class="md:hidden h-16" aria-label="Go to homepage">
+          <img src="/assets/images/DealeryLogo.png" alt="Dealery Logo" class="hidden md:block h-16" aria-label="Go to homepage">
+        </a>
+
+        <nav class="hidden md:block" aria-label="Primary Navigation">
+          <ul class="flex space-x-4 text-white font-semibold">
+            <li class="nav-link p-2"><a href="#" class="hover:text-yellow-300">Home</a></li>
+            <li class="nav-link p-2"><a href="/pages/listings/listings.html" class="hover:text-yellow-300">Auctions</a></li>
+            <li class="nav-link p-2"><a href="/pages/registerlogin/registerlogin.html" class="hover:text-yellow-300">Login / Register</a></li>
+          </ul>
+        </nav>
+
+        <div class="block md:hidden">
+          <button id="dropdownBtn" class="cursor-pointer" aria-label="Open dropdown menu">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60" height="60" viewBox="0 0 24 24">
+            <path d="M 3 5 A 1.0001 1.0001 0 1 0 3 7 L 21 7 A 1.0001 1.0001 0 1 0 21 5 L 3 5 z M 3 11 A 1.0001 1.0001 0 1 0 3 13 L 21 13 A 1.0001 1.0001 0 1 0 21 11 L 3 11 z M 3 17 A 1.0001 1.0001 0 1 0 3 19 L 21 19 A 1.0001 1.0001 0 1 0 21 17 L 3 17 z"></path>
+          </svg>
+          </button>
+          <div class="hidden flex flex-col absolute right-0 top-47 mt-2 w-screen text-center bg-blue-900 overflow-hidden transition transform origin-top-right" id="DropDownNotLoggedIn">
+            <li class="nav-link p-2 py-3"><a href="/index.html" class="text-white hover:text-blue-400">Home</a></li>
+            <li class="nav-link p-2 py-3"><a href="/pages/listings/listings.html" class="text-white hover:text-blue-400">Auctions</a></li>
+            <li class="nav-link p-2 py-3"><a href="/pages/registerlogin/registerlogin.html" class="text-white hover:text-blue-400">Login / Register</a></li>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="min-h-[70vh]">
+      <div class="bg-blue-300 py-10 md:px-10">
+        <h1>Discover Unique Items, Bid with confidence</h1>
+        <p>Join thousands of students buying and selling extraordinary items through exciting live auctions</p>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-2xl hover:bg-blue-900 transition border-white border block mx-auto md:mx-0 text-center" aria-label="Explore Auctions">
+          <a href="/pages/listings/listings.html">Explore Auctions -></a>
+        </button>
+      </div>
+
+      <div class="flex flex-row justify-between px-20 py-6 text-center border-y">
+        <div>
+          <h2 class="text-blue-600" id="activeListings">0</h2>
+          <p class="italic">Active Listings</p>
+        </div>
+        <div>
+          <h2 class="text-blue-600" id="totalSpent">$0</h2>
+          <p class="italic">Total Traded</p>
+        </div>
+        <div>
+          <h2 class="text-blue-600" id="endingToday">0</h2>
+          <p class="italic">Ending Today</p>
+        </div>
+      </div>
+
+      <section class="py-10 border-b-2 border-blue-400">
+        <div class="flex justify-between items-center md:px-20 mb-6">
+          <h2 class="">Ending Soon</h2>
+          <p class="font-semibold hover:underline hidden md:block"><a href="/pages/listings/listings.html">View All -></a></p>
+        </div>
+        <div id="ending-soon" class="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-10 overflow-hidden">
+          <!-- Listings comes here -->
+          <h3>Loading Listings..</h3>
+        </div>
+        <p class="font-semibold hover:underline sm:hidden text-center"><a href="/pages/listings/listings.html">View All -></a></p>
+      </section>
+
+      <section class="py-10">
+        <div class="flex justify-between items-center px-20 mb-6">
+          <h2 class="text-center sm:text-left">Newest Listings</h2>
+          <p class="font-semibold hover:underline"><a href="/pages/listings/listings.html">View All -></a></p>
+        </div>
+        <div id="newest-listings" class="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-10 overflow-hidden">
+          <!-- Listings comes here -->
+          <h3>Loading Listings..</h3>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-blue-700 text-white h-fit items-center flex justify-around p-10 flex-col md:flex-row">
+      <img src="/assets/images/DealeryLogo.png" alt="Dealery Logo" class="hidden md:block h-16">
+      <div class="max-w-1/2 text-center order-2 flex flex-col items-center">
+        <h3>Ready to start bidding?</h3>
+        <p>Join Dealery today with your student email and get 1000 free credits to start your auction journey!</p>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-2xl hover:bg-blue-900 transition border-white border block mx-auto md:mx-0 text-center"><a href="/pages/registerlogin/registerlogin.html" aria-label="Create an account form">Create an account -></a></button>
+      </div>
+      <img src="/assets/images/DealeryLogoPhone.png" alt="Dealery Logo" class="md:hidden h-20 my-10">
+    </footer>
+    <script type="module" src="/pages/homepage/index.js"></script>
+    <script type="module" src="/js/utils/navbarfooter.js"></script>
+    <script type="module" src="/js/logout.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Online Auction Platform" />
+    <meta name="keywords" content="Auction House, Bidding, Bid, Online Auction, Dealery" />
+    <meta name="author" content="Henrik Leutscher" />
+    <link rel="icon" type="image/png" href="/assets/icons/favicon.png" />
+    <title>Home | Dealery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+  </head>
+<body>
+    <header class="bg-blue-700 h-full py-5 sm:py-0">
+      <div class="h-30 items-center flex justify-between px-5" id="HeaderNotLoggedIn">
+        <a href="/index.html">
+          <img src="/assets/images/DealeryLogoPhone.png" alt="Dealery Logo" class="md:hidden h-16" aria-label="Go to homepage">
+          <img src="/assets/images/DealeryLogo.png" alt="Dealery Logo" class="hidden md:block h-16" aria-label="Go to homepage">
+        </a>
+
+        <nav class="hidden md:block" aria-label="Primary Navigation">
+          <ul class="flex space-x-4 text-white font-semibold">
+            <li><a href="/index.html" class="hover:text-yellow-300">Home</a></li>
+            <li><a href="/pages/listings/listings.html" class="hover:text-yellow-300">Auctions</a></li>
+            <li><a href="/pages/registerlogin/registerlogin.html" class="hover:text-yellow-300">Login / Register</a></li>
+          </ul>
+        </nav>
+
+        <div class="block md:hidden">
+          <button id="dropdownBtn" class="cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60" height="60" viewBox="0 0 24 24">
+            <path d="M 3 5 A 1.0001 1.0001 0 1 0 3 7 L 21 7 A 1.0001 1.0001 0 1 0 21 5 L 3 5 z M 3 11 A 1.0001 1.0001 0 1 0 3 13 L 21 13 A 1.0001 1.0001 0 1 0 21 11 L 3 11 z M 3 17 A 1.0001 1.0001 0 1 0 3 19 L 21 19 A 1.0001 1.0001 0 1 0 21 17 L 3 17 z"></path>
+          </svg>
+          </button>
+          <div class="hidden flex flex-col absolute right-0 top-47 mt-2 w-screen text-center bg-blue-900 overflow-hidden transition transform origin-top-right" id="DropDownNotLoggedIn">
+            <a href="/index.html" class="text-white hover:text-blue-400 py-2 border-b border-blue-400">Home</a>
+            <a href="/pages/listings/listings.html" class="text-white hover:text-blue-400 py-2 border-b border-blue-400">Auctions</a>
+            <a href="/pages/registerlogin/registerlogin.html" class="text-white hover:text-blue-400 py-2 border-b border-blue-400">Login / Register</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="min-h-[70vh] max-w-[1400px] mx-auto">
+      <h1 class="text-center py-5">Profile Page</h1>
+      <div id="profile-container" class="w-[90%] mx-auto border-blue-400 border-2 p-5">
+        <div>
+          <div class="flex flex-col  items-center md:flex-row justify-between">
+            <img loading="lazy" id="profile-avatar" class="w-30 h-30 md:h-60 md:w-60 rounded-full mb-4 object-cover"/>
+            <img loading="lazy" id="profile-banner" class="w-full h-30 md:w-2/3 md:h-60 mb-4 object-cover"/>
+          </div>
+          <h2 id="profile-name"></h2>
+          <p id="profile-email"></p>
+          <p class="font-bold border-blue-400 border-y-2 py-3">User Bio:<br><span id="profile-bio" class="font-normal"></span></p>
+          <p>Your Credits: <span id="profile-credits"></span></p>
+          <div id="edit-profile-content" class="hidden">
+            <button id="edit-profile-btn" class="bg-yellow-500 hover:bg-yellow-800 text-white font-bold px-4 py-2 rounded-2xl cursor-pointer" aria-label="Open edit profile form">Edit Profile</button>
+            <div id="edit-profile-container" class="hidden">
+              <form id="edit-profile-form" class="flex flex-col gap-4 mt-4">
+                <label for="edit-bio">Bio:</label>
+                <textarea id="edit-bio" name="bio" rows="4" class="w-full min-h-10 h-20 font-medium mb-3 rounded-lg px-2 py-1 bg-white text-blue-500 border-blue-400 border-2 resize-y"></textarea>
+
+                <label for="edit-avatar">Avatar URL:</label>
+                <input type="text" id="edit-avatar" name="avatarUrl" class="w-full h-10 font-medium mb-3 rounded-lg px-2 py-1 bg-white text-blue-500 border-blue-400 border-2 resize-y"/>
+
+                <label for="edit-banner">Banner URL:</label>
+                <input type="text" id="edit-banner" name="bannerUrl" class="w-full h-10 font-medium mb-3 rounded-lg px-2 py-1 bg-white text-blue-500 border-blue-400 border-2 resize-y"/>
+
+                <button type="button" id="save-profile-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded-2xl cursor-pointer" aria-label="Save profile changes">Save Changes</button>
+              </form>
+              <p id="error-message"></p>
+            </div>
+          </div>
+        </div>
+        <div id="user-listings-container" class="mx-auto border-blue-400 border-t-2 p-5 my-3">
+          <h2>Active Listings:</h2>
+          <div id="user-listings" class="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-10 overflow-hidden"></div>
+        </div>
+        <div id="user-bids-container" class="mx-auto border-blue-400 border-t-2 p-5 my-3">
+          <h2>Listings This User Has Bid On:</h2>
+          <div id="userBids" class="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-10 overflow-hidden"></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-blue-700 text-white h-fit items-center flex justify-around p-10 flex-col md:flex-row">
+      <img src="/assets/images/DealeryLogo.png" alt="Dealery Logo" class="hidden md:block h-16">
+      <div class="max-w-1/2 text-center order-2 flex flex-col items-center">
+        <h3>Ready to start bidding?</h3>
+        <p>Join Dealery today with your student email and get 1000 free credits to start your auction journey!</p>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-2xl hover:bg-blue-900 transition border-white border block mx-auto md:mx-0 text-center"><a href="/pages/registerlogin/registerlogin.html" aria-label="Create an account form">Create an account -></a></button>
+      </div>
+      <img src="/assets/images/DealeryLogoPhone.png" alt="Dealery Logo" class="md:hidden h-20 my-10">
+    </footer>
+    <script type="module" src="/pages/profile/profile.js"></script>
+    <script type="module" src="/js/utils/navbarfooter.js"></script>
+    <script type="module" src="/js/logout.js"></script>
+</body>
+</html>
