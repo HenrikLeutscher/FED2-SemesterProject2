@@ -10,23 +10,23 @@ if (token) {
     header.innerHTML = `
     <div class="h-30 items-center flex justify-between px-5" id="HeaderNotLoggedIn">
         <a href="/index.html">
-          <img src="/assets/images/DealeryLogoPhone.png" alt="Dealery Logo" class="md:hidden h-16" aria-label="Go to homepage">
-          <img src="/assets/images/DealeryLogo.png" alt="Dealery Logo" class="hidden md:block h-16" aria-label="Go to homepage">
+          <img src="/assets/images/DealeryLogoPhone.png" alt="Dealery Logo" class="lg:hidden h-16" aria-label="Go to homepage">
+          <img src="/assets/images/DealeryLogo.png" alt="Dealery Logo" class="hidden lg:block h-16" aria-label="Go to homepage">
         </a>
 
         <nav class="hidden md:flex md:items-center md:space-x-6">
           <ul class="flex space-x-4 text-white font-semibold">
-            <li class="nav-link p-2"><a href="/index.html" class="hover:text-yellow-300 hover:underline">Home</a></li>
-            <li class="nav-link p-2"><a href="/pages/listings/listings.html" class="hover:text-yellow-300 hover:underline ">Auctions</a></li>
-            <li class="nav-link p-2"><a href="/pages/createAuctionListing/createAuctionListing.html" class="hover:text-yellow-300 hover:underline">Create a listing +</a></li>
+            <li class="nav-link p-2"><a href="/index.html" class="hover:text-yellow-300 hover:underline md:text-sm lg:text-xl">Home</a></li>
+            <li class="nav-link p-2"><a href="/pages/listings/listings.html" class="hover:text-yellow-300 hover:underline md:text-sm lg:text-xl">Auctions</a></li>
+            <li class="nav-link p-2"><a href="/pages/createAuctionListing/createAuctionListing.html" class="hover:text-yellow-300 hover:underline md:text-sm lg:text-xl">Create a listing +</a></li>
             
           </ul>
         </nav>
 
         <nav class="hidden md:flex md:items-center md:space-x-6">
           <ul class="flex space-x-4 text-white font-semibold">
-            <li class="nav-link p-2"><a href="/pages/registerlogin/registerlogin.html" id="logoutBtn" class="hover:text-yellow-300 hover:underline">Log Out</a></li>
-            <li class="p-2"><a class="navbar-credits bg-blue-400 px-5 py-2.5 rounded-xl"></a></li>
+            <li class="nav-link p-2"><a href="/pages/registerlogin/registerlogin.html" id="logoutBtn" class="hover:text-yellow-300 hover:underline md:text-sm lg:text-xl">Log Out</a></li>
+            <li class="p-2"><a class="navbar-credits bg-blue-400 px-5 py-2.5 rounded-xl md:text-sm lg:text-xl"></a></li>
           </ul>
           <div class="hidden md:flex md:items-center md:space-x-4">
             <a href="/pages/profile/profile.html">
@@ -42,7 +42,7 @@ if (token) {
             <path d="M 3 5 A 1.0001 1.0001 0 1 0 3 7 L 21 7 A 1.0001 1.0001 0 1 0 21 5 L 3 5 z M 3 11 A 1.0001 1.0001 0 1 0 3 13 L 21 13 A 1.0001 1.0001 0 1 0 21 11 L 3 11 z M 3 17 A 1.0001 1.0001 0 1 0 3 19 L 21 19 A 1.0001 1.0001 0 1 0 21 17 L 3 17 z"></path>
           </svg>
           </button>
-          <div class="hidden flex flex-col absolute right-0 top-47 mt-2 w-screen text-center bg-blue-900 overflow-hidden transition transform origin-top-right" id="DropDownNotLoggedIn">
+          <div class="hidden flex flex-col absolute right-0 top-47 mt-2 w-screen text-center bg-blue-900 overflow-hidden transition transform origin-top-right z-50" id="DropDownNotLoggedIn">
             <li class="nav-link p-2 py-3"><a href="/index.html" class="text-white hover:text-blue-400">Home</a></li>
             <li class="nav-link p-2 py-3"><a href="/pages/listings/listings.html" class="text-white hover:text-blue-400">Auctions</a></li>
             <li class="nav-link p-2 py-3"><a href="/pages/profile/profile.html" class="text-white hover:text-blue-400">My Profile</a></li>
