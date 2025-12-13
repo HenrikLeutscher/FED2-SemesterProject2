@@ -25,7 +25,7 @@ if (token) {
 
         <nav class="hidden md:flex md:items-center md:space-x-6">
           <ul class="flex space-x-4 text-white font-semibold">
-            <li class="nav-link p-2"><a href="/pages/registerlogin/registerlogin.html" id="logoutBtn" class="hover:text-yellow-300 hover:underline md:text-sm lg:text-xl">Log Out</a></li>
+            <li class="p-2"><a href="/index.html" id="logoutBtn" class="hover:text-yellow-300 hover:underline md:text-sm lg:text-xl">Log Out</a></li>
             <li class="p-2"><a class="navbar-credits bg-blue-400 px-5 py-2.5 rounded-xl md:text-sm lg:text-xl"></a></li>
           </ul>
           <div class="hidden md:flex md:items-center md:space-x-4">
@@ -47,7 +47,7 @@ if (token) {
             <li class="nav-link p-2 py-3"><a href="/pages/listings/listings.html" class="text-white hover:text-blue-400">Auctions</a></li>
             <li class="nav-link p-2 py-3"><a href="/pages/profile/profile.html" class="text-white hover:text-blue-400">My Profile</a></li>
             <li class="nav-link p-2 py-3"><a href="/pages/createAuctionListing/createAuctionListing.html" class="text-white hover:text-blue-400">+ Create a listing</a></li>
-            <li class="nav-link p-2 py-3"><a href="/pages/registerlogin/registerlogin.html" id="logoutBtn" class="text-white hover:text-blue-400">Log Out</a></li>
+            <li class="p-2 py-3"><a href="/index.html" id="logoutBtn" class="text-white hover:text-blue-400">Log Out</a></li>
           </div>
         </div>
       </div>`
