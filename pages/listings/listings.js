@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     displayListings(filteredListings, listingsContainer);
     startCountDown(listingsContainer);
   } catch (error) {
-    console.error("Error loading listings:", error);
     listingsContainer.innerHTML = "<p>Failed to load listings.</p>";
     return;
   }

@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     startCountDown(individualListingContainer);
     document.title = `${listing.title} | Dealery`;
   } catch (error) {
-    console.error(error);
     individualListingContainer.innerHTML = `<p class="text-center">Error loading listing...</p>`;
   }
 });
@@ -363,7 +362,6 @@ async function placeBid(listingId, amount) {
       successMessageDiv.classList.add("hidden");
     }, 3000);
   } catch (error) {
-    console.error("Error placing bid:", error);
     errorMessageDiv.textContent =
       "There was an error placing your bid. Please try again.";
   }

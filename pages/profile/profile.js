@@ -150,7 +150,6 @@ async function loadUserListings(username) {
     displayListings(listings, userListings, false);
     startCountDown(userListings);
   } catch (error) {
-    console.error("Error loading user listings:", error);
     userListings.innerHTML = "<p>Failed to load user listings.</p>";
   }
 }
@@ -289,7 +288,6 @@ async function loadUserBidListings(profileData) {
     displayListings(matched, userBidsContainer, false);
     startCountDown(userBidsContainer);
   } catch (error) {
-    console.error("Error loading bid listings:", error);
     userBidsContainer.innerHTML = "<p>Failed to load user bid history.</p>";
   }
 }
