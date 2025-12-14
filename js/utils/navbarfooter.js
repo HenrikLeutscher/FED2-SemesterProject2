@@ -7,7 +7,7 @@ const header = document.querySelector("header");
 const footer = document.querySelector("footer");
 
 if (token) {
-    header.innerHTML = `
+  header.innerHTML = `
     <div class="h-30 items-center flex justify-between px-5" id="HeaderNotLoggedIn">
         <a href="/index.html">
           <img src="/assets/images/DealeryLogoPhone.png" alt="Dealery Logo" class="lg:hidden h-16" aria-label="Go to homepage">
@@ -30,7 +30,7 @@ if (token) {
           </ul>
           <div class="hidden md:flex md:items-center md:space-x-4">
             <a href="/pages/profile/profile.html">
-              <img id="navbar-avatar" src="/assets/icons/profile-placeholder.png" alt="Dealery Logo" class="h-15 w-15 rounded-full object-cover hover:h-20 hover:w-20">
+              <img id="navbar-avatar" src="/assets/icons/profile-placeholder.png" alt="User Avatar" class="h-15 w-15 rounded-full object-cover hover:h-20 hover:w-20">
             </a>
           </div>
         </nav>
@@ -50,9 +50,9 @@ if (token) {
             <li class="p-2 py-3"><a href="#" class="logout-btn text-white hover:text-blue-400">Log Out</a></li>
           </div>
         </div>
-      </div>`
+      </div>`;
 
-      footer.innerHTML = `
+  footer.innerHTML = `
         <img src="/assets/images/DealeryLogo.png" alt="Dealery Logo" class="hidden md:block h-16">
         <div class="max-w-1/2 text-center order-2 flex flex-col items-center">
           <h2>Ready to start bidding?</h2>
@@ -60,35 +60,34 @@ if (token) {
           <button class="bg-blue-600 text-white px-4 py-2 rounded-2xl hover:bg-blue-900 transition border-white border block mx-auto md:mx-0 text-center"><a href="/pages/listings/listings.html" aria-label="See all listings">See all listings here!</a></button>
         </div>
         <img src="/assets/images/DealeryLogoPhone.png" alt="Dealery Logo" class="md:hidden h-20 my-10">
-      `
-      
-      setTimeout(() => {
-        loadNavbarProfileInfo();
-      }, 0);
-}
+      `;
 
+  setTimeout(() => {
+    loadNavbarProfileInfo();
+  }, 0);
+}
 
 const dropdownBtn = document.getElementById("dropdownBtn");
 const dropdownNotLoggedIn = document.getElementById("DropDownNotLoggedIn");
 
-dropdownBtn.addEventListener("click", function(event) {
-    event.stopPropagation();
-    dropdownNotLoggedIn.classList.toggle("hidden");
+dropdownBtn.addEventListener("click", function (event) {
+  event.stopPropagation();
+  dropdownNotLoggedIn.classList.toggle("hidden");
 });
 
 document.addEventListener("click", function () {
-    if (!dropdownNotLoggedIn.classList.contains("hidden")) {
-        dropdownNotLoggedIn.classList.add("hidden");
-    }
+  if (!dropdownNotLoggedIn.classList.contains("hidden")) {
+    dropdownNotLoggedIn.classList.add("hidden");
+  }
 });
 
 // Highlight active page
 const currentLink = window.location.pathname;
 const navLinks = document.querySelectorAll(".nav-link");
 
-navLinks.forEach(link => {
+navLinks.forEach((link) => {
   const linkPath = new URL(link.querySelector("a").href).pathname;
-  
+
   if (linkPath === currentLink) {
     link.classList.add("bg-blue-400");
   }
@@ -98,30 +97,30 @@ navLinks.forEach(link => {
 
 async function loadNavbarProfileInfo() {
   const user = getUser();
-    const token = getToken();
-    const apiKey = getApiKey();
+  const token = getToken();
+  const apiKey = getApiKey();
 
-    try {
-      const response = await fetch(`${PROFILES_API_URL}/${user.name}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "X-Noroff-API-Key": apiKey,
-          "Content-Type": "application/json"
-        }
-      });
+  try {
+    const response = await fetch(`${PROFILES_API_URL}/${user.name}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "X-Noroff-API-Key": apiKey,
+        "Content-Type": "application/json",
+      },
+    });
 
-      const { data } = await response.json();
+    const { data } = await response.json();
 
-      const navbarAvatar = document.getElementById("navbar-avatar");
-      const navbarCredits = document.querySelectorAll(".navbar-credits");
+    const navbarAvatar = document.getElementById("navbar-avatar");
+    const navbarCredits = document.querySelectorAll(".navbar-credits");
 
-      navbarAvatar.src = data.avatar?.url || "/assets/icons/profile-placeholder.png";
+    navbarAvatar.src =
+      data.avatar?.url || "/assets/icons/profile-placeholder.png";
 
-      navbarCredits.forEach(element => {
-        element.textContent = `Credits: ${data.credits || 0}`;
-      })
-
-    } catch (error) {
-      console.error("Error loading profile info:", error);
-    }
+    navbarCredits.forEach((element) => {
+      element.textContent = `Credits: ${data.credits || 0}`;
+    });
+  } catch (error) {
+    console.error("Error loading profile info:", error);
+  }
 }
