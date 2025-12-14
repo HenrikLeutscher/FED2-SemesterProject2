@@ -5,7 +5,7 @@ export function saveToken(token) {
 }
 
 export function getToken() {
-    return localStorage.getItem("accessToken");
+  return localStorage.getItem("accessToken");
 }
 
 export function saveUser(user) {
@@ -26,5 +26,5 @@ export function removeUser() {
 }
 
 export function getApiKey() {
-    return API_KEY;
+  return API_KEY;
 }

@@ -18,7 +18,6 @@ const editProfileBtn = document.getElementById("edit-profile-btn");
 const editProfileContainer = document.getElementById("edit-profile-container");
 const userBidsContainer = document.getElementById("userBids");
 
-
 const token = getToken();
 const apiKey = getApiKey();
 
@@ -43,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     editProfileContent.classList.remove("hidden");
   }
 
-  editProfileBtn.addEventListener("click", () => 
+  editProfileBtn.addEventListener("click", () =>
     editProfileContainer.classList.toggle("hidden")
   );
 
@@ -56,9 +55,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     loadUserBidListings(profileData);
 
     document.title = `${profileData.name}'s Profile`;
-    
   } catch (error) {
-    profileContainer.classList.add("border-red-400", "text-center")
+    profileContainer.classList.add("border-red-400", "text-center");
     profileContainer.innerHTML = `
     <p>❌</p>
     <p>Profile could not be loaded:</p>
@@ -69,7 +67,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function loadPublicUserProfile(username) {
   if (!token || !apiKey) {
-    throw new Error("Please <a href='/pages/registerlogin/registerlogin.html' class=\"hover:text-blue-400 underline\">Login or Register here</a> to view profiles!");
+    throw new Error(
+      "Please <a href='/pages/registerlogin/registerlogin.html' class=\"hover:text-blue-400 underline\">Login or Register here</a> to view profiles!"
+    );
   }
 
   const response = await fetch(
@@ -121,13 +121,16 @@ export function displayProfile(user) {
 // Loading user listings
 async function loadUserListings(username) {
   try {
-    const response = await fetch(`${PROFILES_API_URL}/${username}/listings?_bids=true&_seller=true`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-        "X-Noroff-API-Key": apiKey,
-      },
-    });
+    const response = await fetch(
+      `${PROFILES_API_URL}/${username}/listings?_bids=true&_seller=true`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          "X-Noroff-API-Key": apiKey,
+        },
+      }
+    );
 
     if (!response.ok) {
       throw new Error(
@@ -154,60 +157,58 @@ async function loadUserListings(username) {
 
 // Prefills user input when edit profile is pressed
 async function loadUserProfileInput() {
-    const avatarInput = document.getElementById("edit-avatar");
-    const bannerInput = document.getElementById("edit-banner");
-    const bioInput = document.getElementById("edit-bio");
+  const avatarInput = document.getElementById("edit-avatar");
+  const bannerInput = document.getElementById("edit-banner");
+  const bioInput = document.getElementById("edit-bio");
 
-    if (!avatarInput || !bannerInput || !bioInput) return;
+  if (!avatarInput || !bannerInput || !bioInput) return;
 
-    avatarInput.value = profileAvatar.src;
-    bannerInput.value = profileBanner.src;
-    bioInput.value = profileBio.textContent;
+  avatarInput.value = profileAvatar.src;
+  bannerInput.value = profileBanner.src;
+  bioInput.value = profileBio.textContent;
 }
 
 // Edit Profile Submit Handler
 
 const saveProfileBtn = document.getElementById("save-profile-btn");
 if (saveProfileBtn) {
-    saveProfileBtn.addEventListener("click", updateProfile);
+  saveProfileBtn.addEventListener("click", updateProfile);
 }
 
 async function updateProfile() {
-    const avatarInput = document.getElementById("edit-avatar").value;
-    const bannerInput = document.getElementById("edit-banner").value;
-    const bioInput = document.getElementById("edit-bio").value;
-    const errorMessage = document.getElementById("error-message");
-    saveProfileBtn.disabled = true;
-    saveProfileBtn.textContent = "Saving...";
-    errorMessage.textContent = "";
-    const successMessageDiv = document.getElementById("success-message");
+  const avatarInput = document.getElementById("edit-avatar").value;
+  const bannerInput = document.getElementById("edit-banner").value;
+  const bioInput = document.getElementById("edit-bio").value;
+  const errorMessage = document.getElementById("error-message");
+  saveProfileBtn.disabled = true;
+  saveProfileBtn.textContent = "Saving...";
+  errorMessage.textContent = "";
+  const successMessageDiv = document.getElementById("success-message");
 
-    const updatedData = {
-        avatar: avatarInput ? { url: avatarInput } : "",
-        banner: bannerInput ? { url: bannerInput } : "",
-        bio: bioInput || "",
-    };
+  const updatedData = {
+    avatar: avatarInput ? { url: avatarInput } : "",
+    banner: bannerInput ? { url: bannerInput } : "",
+    bio: bioInput || "",
+  };
 
-    try {
-        const response = await fetch(
-      `${PROFILES_API_URL}/${getUser().name}`,
-      {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          "X-Noroff-API-Key": apiKey,
-        },
-        body: JSON.stringify(updatedData),
-      }
-    );
+  try {
+    const response = await fetch(`${PROFILES_API_URL}/${getUser().name}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        "X-Noroff-API-Key": apiKey,
+      },
+      body: JSON.stringify(updatedData),
+    });
 
     const result = await response.json();
 
     if (!response.ok) {
-      errorMessage.textContent = result.errors?.[0]?.message || "Failed to update profile";
+      errorMessage.textContent =
+        result.errors?.[0]?.message || "Failed to update profile";
       saveProfileBtn.disabled = false;
-        saveProfileBtn.textContent = "Save Changes";
+      saveProfileBtn.textContent = "Save Changes";
       return;
     }
 
@@ -221,9 +222,9 @@ async function updateProfile() {
       Profile updated successfully! Reloading...
     </span>`;
     setTimeout(() => window.location.reload(), 2000);
-    } catch (error) {
-        errorMessage.textContent = "Error updating profile: " + error.message;
-    }
+  } catch (error) {
+    errorMessage.textContent = "Error updating profile: " + error.message;
+  }
 }
 
 // So the API returns 100 listings at max...
@@ -231,7 +232,8 @@ async function updateProfile() {
 async function loadUserBidListings(profileData) {
   if (!userBidsContainer) return;
 
-  userBidsContainer.innerHTML = "<p class=\"text-center\">Currently loading bid history.. Please wait.</p>";
+  userBidsContainer.innerHTML =
+    '<p class="text-center">Currently loading bid history.. Please wait.</p>';
 
   const targetName = profileData?.name;
   if (!targetName) {
@@ -255,7 +257,8 @@ async function loadUserBidListings(profileData) {
         }
       );
 
-      if (!response.ok) throw new Error(`Failed to fetch listings (page ${page})`);
+      if (!response.ok)
+        throw new Error(`Failed to fetch listings (page ${page})`);
 
       const result = await response.json();
       const listings = result.data || [];
@@ -263,8 +266,8 @@ async function loadUserBidListings(profileData) {
       // nothing more to fetch
       if (listings.length === 0) break;
 
-      const pageMatches = listings.filter(listing =>
-        listing.bids?.some(bid => bid.bidder?.name === targetName)
+      const pageMatches = listings.filter((listing) =>
+        listing.bids?.some((bid) => bid.bidder?.name === targetName)
       );
 
       matched.push(...pageMatches);
@@ -275,7 +278,7 @@ async function loadUserBidListings(profileData) {
       page++;
 
       // tiny delay to reduce chance of 429
-      await new Promise(r => setTimeout(r, 200));
+      await new Promise((r) => setTimeout(r, 200));
     }
 
     if (matched.length === 0) {

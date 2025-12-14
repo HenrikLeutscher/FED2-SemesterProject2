@@ -25,7 +25,7 @@ if (token) {
 
         <nav class="hidden md:flex md:items-center md:space-x-6">
           <ul class="flex space-x-4 text-white font-semibold">
-            <li class="p-2"><a href="/index.html" id="logoutBtn" class="hover:text-yellow-300 hover:underline md:text-sm lg:text-xl">Log Out</a></li>
+            <li class="p-2"><a href="#" class="logout-btn hover:text-yellow-300 hover:underline md:text-sm lg:text-xl">Log Out</a></li>
             <li class="p-2"><a class="navbar-credits bg-blue-400 px-5 py-2.5 rounded-xl md:text-sm lg:text-xl"></a></li>
           </ul>
           <div class="hidden md:flex md:items-center md:space-x-4">
@@ -38,7 +38,7 @@ if (token) {
         <div class="flex items-center gap-4 md:hidden">
           <a class="navbar-credits text-white p-2"></a>
           <button id="dropdownBtn" class="cursor-pointer" aria-label="Open dropdown menu">
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60" height="60" viewBox="0 0 24 24">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60" height="60" viewBox="0 0 24 24" fill="currentColor" class="text-blue-400">
             <path d="M 3 5 A 1.0001 1.0001 0 1 0 3 7 L 21 7 A 1.0001 1.0001 0 1 0 21 5 L 3 5 z M 3 11 A 1.0001 1.0001 0 1 0 3 13 L 21 13 A 1.0001 1.0001 0 1 0 21 11 L 3 11 z M 3 17 A 1.0001 1.0001 0 1 0 3 19 L 21 19 A 1.0001 1.0001 0 1 0 21 17 L 3 17 z"></path>
           </svg>
           </button>
@@ -47,7 +47,7 @@ if (token) {
             <li class="nav-link p-2 py-3"><a href="/pages/listings/listings.html" class="text-white hover:text-blue-400">Auctions</a></li>
             <li class="nav-link p-2 py-3"><a href="/pages/profile/profile.html" class="text-white hover:text-blue-400">My Profile</a></li>
             <li class="nav-link p-2 py-3"><a href="/pages/createAuctionListing/createAuctionListing.html" class="text-white hover:text-blue-400">+ Create a listing</a></li>
-            <li class="p-2 py-3"><a href="/index.html" id="logoutBtn" class="text-white hover:text-blue-400">Log Out</a></li>
+            <li class="p-2 py-3"><a href="#" class="logout-btn text-white hover:text-blue-400">Log Out</a></li>
           </div>
         </div>
       </div>`

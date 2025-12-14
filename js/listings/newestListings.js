@@ -15,7 +15,6 @@ export async function renderNewestListings() {
 
     displayListings(newestListings, container);
     startCountDown(container);
-
   } catch (error) {
     console.error("Error loading newest listings:", error);
     container.innerHTML = "<p>Failed to load newest listings.</p>";

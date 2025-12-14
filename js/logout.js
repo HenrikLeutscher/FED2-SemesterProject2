@@ -1,25 +1,16 @@
-import { removeToken } from "/js/utils/storage.js";
-import { removeUser } from "/js/utils/storage.js";
+import { removeToken, removeUser } from "/js/utils/storage.js";
 
-export function logout() {
-    const logoutBtn = document.getElementById("logoutBtn");
-    if (logoutBtn) {
-        logoutBtn.disabled = true;
-        logoutBtn.textContent = "Logging out...";
-    }
-    removeToken();
-    setTimeout(() => {
-        removeToken();
-        removeUser();
-        window.location.href = "/index.html";
-    }, 2000);
-}
+document.addEventListener("click", (event) => {
+  if (!event.target.classList.contains("logout-btn")) return;
 
-document.addEventListener("DOMContentLoaded", () => {
-    const logoutBtn = document.getElementById("logoutBtn");
-    if (logoutBtn) {
-        logoutBtn.addEventListener("click", () => {
-            logout();
-        });
-    }
-})
+  event.preventDefault();
+
+  event.target.textContent = "Logging out...";
+
+  removeToken();
+  removeUser();
+
+  setTimeout(() => {
+    window.location.href = "/index.html";
+  }, 500);
+});

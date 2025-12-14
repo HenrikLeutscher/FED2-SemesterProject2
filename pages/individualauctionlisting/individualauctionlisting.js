@@ -25,29 +25,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderBidHistory(listing);
     startCountDown(individualListingContainer);
     document.title = `${listing.title} | Dealery`;
-
   } catch (error) {
     console.error(error);
     individualListingContainer.innerHTML = `<p class="text-center">Error loading listing...</p>`;
   }
 });
 
-
 function renderListingDetails(listing, individualListingContainer) {
   const bidCount = listing.bids?.length || 0;
   const highestBid = bidCount
-    ? Math.max(...listing.bids.map(b => b.amount))
+    ? Math.max(...listing.bids.map((b) => b.amount))
     : 0;
 
   const hasEnded = new Date(listing.endsAt) <= new Date();
 
-  const images = Array.isArray(listing.media) && listing.media.length
-    ? listing.media
-    : [{ url: "../../assets/images/no-image.png", alt: listing.title }];
+  const images =
+    Array.isArray(listing.media) && listing.media.length
+      ? listing.media
+      : [{ url: "../../assets/images/no-image.png", alt: listing.title }];
 
-  const listingTags = listing.tags && listing.tags.length
-    ? listing.tags.join(", ")
-    : "No tags";
+  const listingTags =
+    listing.tags && listing.tags.length ? listing.tags.join(", ") : "No tags";
 
   let currentImageIndex = 0;
 
@@ -72,7 +70,9 @@ function renderListingDetails(listing, individualListingContainer) {
             class="w-full max-h-75 md:max-h-100 lg:max-h-150 lg:h-full object-cover mb-4"
           />
 
-          ${images.length > 1 ? `
+          ${
+            images.length > 1
+              ? `
             <button id="prevImage"
               class="absolute left-2 bottom-2 -translate-y-1/2 bg-blue-400 text-white px-3 py-1 rounded" aria-label="Previous Image">
               ◀
@@ -82,7 +82,9 @@ function renderListingDetails(listing, individualListingContainer) {
               class="absolute right-2 bottom-2 -translate-y-1/2 bg-blue-400 text-white px-3 py-1 rounded" aria-label="Next Image">
               ▶
             </button>
-          ` : ""}
+          `
+              : ""
+          }
         </div>
 
         <div class="px-5 lg:max-w-1/2 w-full">
@@ -107,7 +109,9 @@ function renderListingDetails(listing, individualListingContainer) {
 
           <p class="border-t-2 border-blue-400 pt-3 font-semibold">
             Time Remaining:
-            <span class="countdown font-normal" data-ends="${listing.endsAt}"></span>
+            <span class="countdown font-normal" data-ends="${
+              listing.endsAt
+            }"></span>
           </p>
           <div class="border-y-2 border-blue-400 pt-3">
             <p class="font-semibold">Listing Description:</p>
@@ -115,7 +119,9 @@ function renderListingDetails(listing, individualListingContainer) {
           </div>
 
           <div class="flex flex-col items-center gap-3 mt-3 sm:flex-row mb-2">
-            ${getToken() && !hasEnded && !isSeller ? `<div id="bidSection" class="flex flex-col">
+            ${
+              getToken() && !hasEnded && !isSeller
+                ? `<div id="bidSection" class="flex flex-col">
                 <input type="number"
                 id="bidAmount"
                 class="border rounded px-2 py-1"
@@ -127,15 +133,21 @@ function renderListingDetails(listing, individualListingContainer) {
                 Place a Bid
               </button>
               <small class="text-sm text-blue-800 text-center pt-2 underline">Credits may be locked during bids.</small>
-            </div>` : ""}
+            </div>`
+                : ""
+            }
 
-             ${isSeller && getToken() ? `<button id="editListingBtn" class="bg-yellow-400 text-white px-4 py-2 rounded cursor-pointer" aria-label="Edit listing">
+             ${
+               isSeller && getToken()
+                 ? `<button id="editListingBtn" class="bg-yellow-400 text-white px-4 py-2 rounded cursor-pointer" aria-label="Edit listing">
               Edit Listing
             </button>
 
             <button id="deleteListingBtn" class="bg-red-600 text-white px-4 py-2 rounded cursor-pointer" aria-label="Delete listing">
               Delete Listing
-            </button>` : ""}
+            </button>`
+                 : ""
+             }
           </div>
           <div id="error-message" class="text-red-600 pt-5 font-semibold"></div>
 
@@ -165,7 +177,6 @@ function renderListingDetails(listing, individualListingContainer) {
       imageCounter.alt = images[currentImageIndex].alt || listing.title;
       imageCounter.textContent = `${currentImageIndex + 1} / ${images.length}`;
     }
-
 
     prevBtn.addEventListener("click", () => {
       currentImageIndex =
@@ -198,7 +209,6 @@ function renderListingDetails(listing, individualListingContainer) {
         bidBtn.disabled = false;
         bidBtn.textContent = "Place a Bid";
         return;
-
       }
       setTimeout(() => {
         bidBtn.disabled = false;
@@ -221,7 +231,9 @@ function renderListingDetails(listing, individualListingContainer) {
 
   if (deleteListingBtn) {
     deleteListingBtn.addEventListener("click", async () => {
-      const confirmDelete = confirm("Are you sure you want to delete this listing?");
+      const confirmDelete = confirm(
+        "Are you sure you want to delete this listing?"
+      );
       if (!confirmDelete) return;
 
       deleteListingBtn.disabled = true;
@@ -241,9 +253,9 @@ function renderListingDetails(listing, individualListingContainer) {
         setTimeout(() => {
           window.location.href = "/pages/listings/listings.html";
         }, 3000);
-
       } catch (error) {
-        errorMessageDiv.textContent = "There was an error deleting the listing. Please try again.";
+        errorMessageDiv.textContent =
+          "There was an error deleting the listing. Please try again.";
         deleteListingBtn.disabled = false;
         deleteListingBtn.textContent = "Delete Listing";
       }
@@ -252,10 +264,12 @@ function renderListingDetails(listing, individualListingContainer) {
 }
 
 function renderBidHistory(listing) {
-  const bidHistoryindividualListingContainer = document.getElementById("bidHistory");
+  const bidHistoryindividualListingContainer =
+    document.getElementById("bidHistory");
 
   if (!listing.bids || listing.bids.length === 0) {
-    bidHistoryindividualListingContainer.innerHTML = "<p>No bids yet. Be the first to bid!</p>";
+    bidHistoryindividualListingContainer.innerHTML =
+      "<p>No bids yet. Be the first to bid!</p>";
     return;
   }
 
@@ -264,7 +278,7 @@ function renderBidHistory(listing) {
   );
 
   bidHistoryindividualListingContainer.innerHTML = sortedBids
-    .map(bid => {
+    .map((bid) => {
       const bidderName = bid.bidder?.name || "Unknown";
       const bidAmount = bid.amount;
       const bidTime = new Date(bid.created).toLocaleString();
@@ -305,7 +319,8 @@ async function placeBid(listingId, amount) {
       const loggedInUser = getUser();
 
       if (highestBidObject.bidder?.name === loggedInUser?.name) {
-        errorMessageDiv.textContent = "You have already placed the highest bid.";
+        errorMessageDiv.textContent =
+          "You have already placed the highest bid.";
         bidBtn.disabled = false;
         bidBtn.textContent = "Place a Bid";
         return;
@@ -316,10 +331,10 @@ async function placeBid(listingId, amount) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-        "X-Noroff-API-Key": API_KEY
+        Authorization: `Bearer ${token}`,
+        "X-Noroff-API-Key": API_KEY,
       },
-      body: JSON.stringify({ amount })
+      body: JSON.stringify({ amount }),
     });
 
     const result = await response.json();
@@ -347,9 +362,9 @@ async function placeBid(listingId, amount) {
     setTimeout(() => {
       successMessageDiv.classList.add("hidden");
     }, 3000);
-
   } catch (error) {
     console.error("Error placing bid:", error);
-    errorMessageDiv.textContent = "There was an error placing your bid. Please try again.";
+    errorMessageDiv.textContent =
+      "There was an error placing your bid. Please try again.";
   }
 }

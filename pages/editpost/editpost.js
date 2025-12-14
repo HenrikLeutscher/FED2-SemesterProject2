@@ -24,8 +24,8 @@ async function loadListing() {
     const response = await fetch(`${AUCTION_LISTINGS_URL}/${listingId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
-        "X-Noroff-API-Key": apiKey
-      }
+        "X-Noroff-API-Key": apiKey,
+      },
     });
 
     const { data } = await response.json();
@@ -34,9 +34,8 @@ async function loadListing() {
     descInput.value = data.description || "";
     tagsInput.value = data.tags?.join(", ") || "";
 
-    mediaInput.value = data.media?.map(img => img.url).join("\n") || "";
-    altInput.value = data.media?.map(img => img.alt).join("\n") || "";
-
+    mediaInput.value = data.media?.map((img) => img.url).join("\n") || "";
+    altInput.value = data.media?.map((img) => img.alt).join("\n") || "";
   } catch (error) {
     errorMessageDiv.textContent = "Failed to load listing for edit";
   }
@@ -50,21 +49,21 @@ form.addEventListener("submit", async (e) => {
   editBtn.disabled = true;
   editBtn.textContent = "Saving...";
 
-  const tags = tagsInput.value.split(",").map(tag => tag.trim());
+  const tags = tagsInput.value.split(",").map((tag) => tag.trim());
 
-  const mediaUrls = mediaInput.value.split("\n").map(url => url.trim());
-  const mediaAlts = altInput.value.split("\n").map(alt => alt.trim());
+  const mediaUrls = mediaInput.value.split("\n").map((url) => url.trim());
+  const mediaAlts = altInput.value.split("\n").map((alt) => alt.trim());
 
   const media = mediaUrls.map((url, i) => ({
     url,
-    alt: mediaAlts[i] || "Auction Image"
+    alt: mediaAlts[i] || "Auction Image",
   }));
 
   const updatedData = {
     title: titleInput.value,
     description: descInput.value,
     tags,
-    media
+    media,
   };
 
   try {
@@ -73,18 +72,19 @@ form.addEventListener("submit", async (e) => {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
-        "X-Noroff-API-Key": apiKey
+        "X-Noroff-API-Key": apiKey,
       },
-      body: JSON.stringify(updatedData)
+      body: JSON.stringify(updatedData),
     });
 
     const result = await response.json();
 
     if (!response.ok) {
-        editBtn.disabled = false
-        editBtn.textContent = "Edit Listing"
-        errorMessageDiv.textContent = result.errors?.[0]?.message || "Failed to update listing";
-        return;
+      editBtn.disabled = false;
+      editBtn.textContent = "Edit Listing";
+      errorMessageDiv.textContent =
+        result.errors?.[0]?.message || "Failed to update listing";
+      return;
     }
 
     successMessageDiv.classList.remove("hidden");
@@ -100,7 +100,6 @@ form.addEventListener("submit", async (e) => {
     setTimeout(() => {
       window.location.href = `/pages/individualauctionlisting/individualauctionlisting.html?id=${listingId}`;
     }, 3000);
-
   } catch (error) {
     errorMessageDiv.textContent = "Failed to update listing";
     editBtn.disabled = false;
@@ -110,9 +109,13 @@ form.addEventListener("submit", async (e) => {
 
 // Counter for description input length
 
-const editDescriptionInput = document.getElementById('edit-listing-description');
-const editDescriptionCounter = document.getElementById('edit-description-counter');
+const editDescriptionInput = document.getElementById(
+  "edit-listing-description"
+);
+const editDescriptionCounter = document.getElementById(
+  "edit-description-counter"
+);
 
 editDescriptionInput.addEventListener("input", () => {
-    editDescriptionCounter.textContent = editDescriptionInput.value.length;
+  editDescriptionCounter.textContent = editDescriptionInput.value.length;
 });
