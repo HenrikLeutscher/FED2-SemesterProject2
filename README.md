@@ -1,5 +1,5 @@
 # FED2-SemesterProject2
- 
+
 ![Project Teaser (Image will be added)]()
 
 ## Content
@@ -13,6 +13,7 @@
 - [Contact](#contact)
 
 ## Description
+
 - Login as a user
 - Register to become a user
 - View all Auction Listings as a guest
@@ -25,6 +26,7 @@
 - Search posts by name / body content
 
 ## Built With
+
 - HTML, CSS, Tailwind and JavaScript
 - Noroff API (V2)
 - Live Hosting (Netlify)
@@ -63,17 +65,18 @@ npm run build
 ```
 
 Open the app in your browser:
+
 ```bash
-http://localhost:3000
+http://localhost:your_port
 ```
 
 ## Config
 
 1. Register a user.
-Go to "Register" page and fill out required information
+   Go to "Register" page and fill out required information
 
 2. Get your API Key.
-Go to this link: https://docs.noroff.dev/docs/v2/auth/api-key
+   Go to this link: https://docs.noroff.dev/docs/v2/auth/api-key
 
 Scroll down until you see "API Key Tool".
 Login using the credentials you just registered a user with
@@ -81,7 +84,7 @@ Login using the credentials you just registered a user with
 Copy the API Key provided under: "Your API Key:"
 
 3. Change API_KEY.
-Go into the project folder
+   Go into the project folder
 
 Navigate to:
 FED2-SemesterProject2/js/Config.js
