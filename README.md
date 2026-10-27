@@ -1,6 +1,6 @@
 # FED2-SemesterProject2
 
-![Project Teaser (Image will be added)]()
+<img width="1920" height="1080" alt="Dealery" src="https://github.com/user-attachments/assets/9947985b-872d-4f65-900f-1c43c6a1ea8e" />
 
 Deployed Live Website:
 https://dealerysp2.netlify.app/
