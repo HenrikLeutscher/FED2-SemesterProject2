@@ -18,8 +18,8 @@ export function displayListings(listings, container, showSeller = true) {
       return `
         <div class="border border-blue-400 rounded mb-5">
             <img loading="lazy" src="${imageSrc}" class="w-full h-50 object-cover mb-4" alt="${
-        listing.title
-      }" onerror="this.onerror=null;this.src='${placeholder}'" />
+              listing.title
+            }" onerror="this.onerror=null;this.src='${placeholder}'" />
             <div class="px-4 py-2">
                 <h3 class="line-clamp-1">${listing.title}</h3>
                 ${
